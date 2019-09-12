@@ -2198,6 +2198,7 @@ function FlatpickrInstance(
 
     updateNavigationCurrentMonth();
     buildDays();
+    buildMonthSwitch();
   }
 
   function focusAndClose() {
