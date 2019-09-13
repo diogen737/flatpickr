@@ -2049,16 +2049,15 @@ function FlatpickrInstance(
       self.config[hook] = arrayify(self.config[hook] || []).map(bindToInstance);
     });
 
+    self.isMobileBrowser = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     self.isMobile =
-      // !self.config.disableMobile &&
+      !self.config.disableMobile &&
       !self.config.inline &&
       self.config.mode === "single" &&
       !self.config.disable.length &&
       !self.config.enable.length &&
       !self.config.weekNumbers &&
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      );
+      self.isMobileBrowser;
 
     for (let i = 0; i < self.config.plugins.length; i++) {
       const pluginConf = self.config.plugins[i](self) || ({} as Options);
@@ -2527,7 +2526,7 @@ function FlatpickrInstance(
     (self.input as any).type = "text";
 
     self.input.classList.add("flatpickr-input");
-    if (self.isMobile) {
+    if (self.isMobileBrowser) {
       self.input.classList.add("flatpickr-mobile");
     }
     self._input = self.input;

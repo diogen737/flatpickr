@@ -79,6 +79,7 @@ export type Instance = Elements &
 
     isOpen: boolean;
     isMobile: boolean;
+    isMobileBrowser: boolean;
 
     minDateHasTime: boolean;
     maxDateHasTime: boolean;
