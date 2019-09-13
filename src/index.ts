@@ -1326,7 +1326,7 @@ function FlatpickrInstance(
         self.calendarContainer.classList.remove("open");
       }
       if (self._input !== undefined) {
-        self._input.classList.remove("active");
+        self._input.classList.remove("activated");
       }
     }
 
@@ -1874,7 +1874,7 @@ function FlatpickrInstance(
 
     if (!wasOpen) {
       self.calendarContainer.classList.add("open");
-      self._input.classList.add("active");
+      self._input.classList.add("activated");
       triggerEvent("onOpen");
       positionCalendar(positionElement);
     }
