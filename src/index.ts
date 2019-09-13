@@ -2050,7 +2050,7 @@ function FlatpickrInstance(
     });
 
     self.isMobile =
-      !self.config.disableMobile &&
+      // !self.config.disableMobile &&
       !self.config.inline &&
       self.config.mode === "single" &&
       !self.config.disable.length &&
@@ -2527,6 +2527,9 @@ function FlatpickrInstance(
     (self.input as any).type = "text";
 
     self.input.classList.add("flatpickr-input");
+    if (self.isMobile) {
+      self.input.classList.add("flatpickr-mobile");
+    }
     self._input = self.input;
 
     if (self.config.altInput) {
