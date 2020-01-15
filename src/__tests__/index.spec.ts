@@ -156,10 +156,11 @@ describe("flatpickr", () => {
           defaultDate: 1477111633771,
         });
 
+        const date = new Date("2016-10-22T04:47:13.771Z");
         expect(fp.selectedDates[0]).toBeDefined();
-        expect(fp.selectedDates[0].getFullYear()).toEqual(2016);
-        expect(fp.selectedDates[0].getMonth()).toEqual(9);
-        expect(fp.selectedDates[0].getDate()).toEqual(22);
+        expect(fp.selectedDates[0].getFullYear()).toEqual(date.getFullYear());
+        expect(fp.selectedDates[0].getMonth()).toEqual(date.getMonth());
+        expect(fp.selectedDates[0].getDate()).toEqual(date.getDate());
       });
 
       it("should parse unix time", () => {
@@ -168,11 +169,11 @@ describe("flatpickr", () => {
           dateFormat: "U",
         });
 
-        const parsedDate = fp.selectedDates[0];
-        expect(parsedDate).toBeDefined();
-        expect(parsedDate.getFullYear()).toEqual(2016);
-        expect(parsedDate.getMonth()).toEqual(9);
-        expect(parsedDate.getDate()).toEqual(22);
+        const date = new Date("2016-10-22T04:47:13.771Z");
+        expect(fp.selectedDates[0]).toBeDefined();
+        expect(fp.selectedDates[0].getFullYear()).toEqual(date.getFullYear());
+        expect(fp.selectedDates[0].getMonth()).toEqual(date.getMonth());
+        expect(fp.selectedDates[0].getDate()).toEqual(date.getDate());
       });
 
       it('should parse "2016-10"', () => {
@@ -860,7 +861,7 @@ describe("flatpickr", () => {
         });
 
         describe("step attribute", () => {
-          it("copy value if setted", () => {
+          it("copy value if present", () => {
             const el = document.createElement("input");
             el.setAttribute("step", "3");
 
@@ -872,7 +873,7 @@ describe("flatpickr", () => {
             expect(mobileInput.getAttribute("step")).toBe("3");
           });
 
-          it("set 'any' value if not setted", () => {
+          it("don't set a default value if not present", () => {
             const el = document.createElement("input");
             el.removeAttribute("step");
 
@@ -881,7 +882,7 @@ describe("flatpickr", () => {
 
             const mobileInput = fp.mobileInput as HTMLInputElement;
 
-            expect(mobileInput.getAttribute("step")).toBe("any");
+            expect(mobileInput.getAttribute("step")).toBe(null);
           });
         });
 
