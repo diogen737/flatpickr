@@ -17,7 +17,6 @@ export const getConfig = (opts?: { dev: boolean }): RollupOptions => ({
     banner: `/* flatpickr v${pkg.version}, @license MIT */`,
     ...(opts && opts.dev ? { sourcemap: true } : {}),
   },
-  experimentalOptimizeChunks: true,
   onwarn(warning) {
     const ignoredCircular = ["src/types/options.ts", "src/utils/dates.ts"];
 
@@ -48,7 +47,7 @@ export const getConfig = (opts?: { dev: boolean }): RollupOptions => ({
       : []),
   ],
   watch: {
-    chokidar: false,
+    chokidar: undefined,
   },
 });
 

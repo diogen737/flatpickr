@@ -3,13 +3,6 @@
     [
       "@babel/preset-env", {
         "modules": false,
-        "targets": {
-          "browsers": [
-            "ie >= 9",
-            "last 2 versions",
-            "safari >= 7"
-          ]
-        },
         "loose": true
       }
     ]
